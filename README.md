@@ -1,8 +1,8 @@
 # Humanizer
 
-[![skills.sh installs](https://skills.sh/b/blader/humanizer)](https://skills.sh/blader/humanizer)
-
 A portable agent skill that removes signs of AI-generated writing from text, making it sound more natural and human. It is plain Markdown, so it can run in any harness that supports skill-style instructions.
+
+A fork of [blader/humanizer](https://github.com/blader/humanizer), MIT licensed, which is where patterns 1 to 33 come from. This fork adds 34 to 37. Upstream merges rarely and in batches, so the fork carries additions rather than replacing it, and `git pull upstream main` is how upstream releases arrive here.
 
 ## Installation
 
@@ -11,7 +11,7 @@ A portable agent skill that removes signs of AI-generated writing from text, mak
 Install globally with the cross-agent skills CLI so Humanizer is available in every project:
 
 ```bash
-npx skills add blader/humanizer --global
+npx skills add peschee/humanizer --global
 ```
 
 Update an existing install:
@@ -23,13 +23,13 @@ npx skills update humanizer --global
 To install globally into every supported agent harness:
 
 ```bash
-npx skills add blader/humanizer --global --agent '*'
+npx skills add peschee/humanizer --global --agent '*'
 ```
 
 To target one configured harness, pass its agent name:
 
 ```bash
-npx skills add blader/humanizer --global --agent <agent-name>
+npx skills add peschee/humanizer --global --agent <agent-name>
 ```
 
 Omit `--global` for a project-local install that can be committed and shared with collaborators. Start a new agent session or reload skills after installation.
@@ -39,7 +39,7 @@ Omit `--global` for a project-local install that can be committed and shared wit
 Claude Code users can also install Humanizer as a plugin:
 
 ```
-/plugin marketplace add blader/humanizer
+/plugin marketplace add peschee/humanizer
 /plugin install humanizer@humanizer
 ```
 
@@ -52,7 +52,7 @@ Any agent harness can use the skill directly because the runtime artifact is `SK
 For example:
 
 ```bash
-git clone https://github.com/blader/humanizer.git /path/to/your/skills/humanizer
+git clone https://github.com/peschee/humanizer.git /path/to/your/skills/humanizer
 ```
 
 Or, if you already have this repo cloned:
@@ -110,7 +110,7 @@ Rewrites follow a no-fabrication rule: they never add facts, names, dates, or ci
 
 > "LLMs use statistical algorithms to guess what should come next. The result tends toward the most statistically likely result that applies to the widest variety of cases."
 
-## 33 Patterns Detected (with Before/After Examples)
+## 37 Patterns Detected (with Before/After Examples)
 
 ### Content Patterns
 
@@ -169,6 +169,10 @@ Rewrites follow a no-fabrication rule: they never add facts, names, dates, or ci
 | 23 | **Filler phrases** | "In order to", "Due to the fact that" | "To", "Because" |
 | 24 | **Excessive hedging** | "could potentially possibly" | "may" |
 | 25 | **Generic conclusions** | "The future looks bright" | Specific plans or facts |
+| 34 | **False agency** | "The complaint becomes a fix" | "Support fixes the complaint" (use the actor already in the paragraph) |
+| 35 | **Adverb pile** | "genuinely hard, really matters, actually get it right" | "This is hard, and it matters that we get it right" |
+| 36 | **Vague declaratives** | "The implications are significant" | Name the implication, or cut the sentence |
+| 37 | **Narrator from a distance** | "What makes this hard is... People tend to..." | Lead with the subject; name who acted |
 
 ## Full Example
 
@@ -207,6 +211,7 @@ Rewrites follow a no-fabrication rule: they never add facts, names, dates, or ci
 
 ## Version History
 
+- **2.10.0** - Added patterns #34-37: false agency (inanimate things given human verbs, which drops the actor), adverb pile, vague declaratives that announce importance without naming it, and the narrator-from-a-distance voice with its Wh-cleft opener. 37 patterns total. The #34 and #36 rewrites are written to respect the no-fabrication rule from 2.9.0: where the source names no actor and no implication, the guidance is to cut rather than to supply one.
 - **2.9.1** - Improved distribution and portability: removed nonportable frontmatter and tool preapprovals, made global installation the documented default, added package validation, and removed the duplicated long-form example from the runtime prompt. No change to the 33 patterns.
 - **2.9.0** - Added a no-fabrication rule: rewrites may not invent facts, names, dates, or citations not present in the source, and every example that modeled invented specifics was re-cut to use only source information (fixes #187). Replaced paragraph-count parity with an information-over-shape rule, made a user's voice sample outrank the em dash ban, and added invocation modes (pasted text / file / embedded). No change to the 33 patterns.
 - **2.8.3** - Moved the skill version from the unsupported top-level frontmatter key to `metadata.version` for Agent Skills and Claude compatibility. No change to the 33 patterns.

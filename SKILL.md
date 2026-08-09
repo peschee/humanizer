@@ -9,7 +9,7 @@ description: |
   voice, negative parallelisms, and filler phrases.
 license: MIT
 metadata:
-  version: "2.9.1"
+  version: "2.10.0"
 ---
 
 # Humanizer: Remove AI Writing Patterns
@@ -351,6 +351,44 @@ Before returning the final rewrite, scan it for `—` and `–`. Any hit means t
 > Is it worth the price? Honestly? It depends on how often you'll use it.
 **After:**
 > Whether it's worth the price depends on how often you'll use it.
+
+### 34. False Agency
+
+**Words to watch:** the complaint becomes a fix, the decision emerges, the culture shifts, the data tells us, the market rewards, the architecture decides, the process ensures
+**Problem:** LLMs hand human verbs to inanimate things, which removes whoever acted. Decisions do not emerge; someone decides. It reads as description while dodging the sentence's subject, and it is often what an unsourced claim is doing.
+**Before:**
+> Support reads every report. The complaint becomes a fix within days, and the culture shifts around it.
+**After:**
+> Support reads every report and fixes the complaint within days.
+
+(The actor was already in the paragraph. False agency usually sits one sentence away from the person who acted, so look there first. Where the reader is the actor, "you" is right. If nothing in the source says who acted, write the sentence without an actor rather than inventing one.)
+
+### 35. Adverb Pile
+
+**Words to watch:** really, just, genuinely, simply, truly, literally, deeply, fundamentally, inherently, incredibly
+**Problem:** Intensifiers and softeners stack up to sound emphatic while adding nothing. Cut them. If a sentence collapses once the adverb is gone, the sentence was the problem and the adverb was propping it up. One of these on its own is ordinary in casual writing, so the tell is three in a sentence all doing the same job. ("Actually" is also in §7; "honestly" as a standalone opener is §33.)
+**Before:**
+> This is genuinely hard, and it really matters that we actually get it right.
+**After:**
+> This is hard, and it matters that we get it right.
+
+### 36. Vague Declaratives
+
+**Words to watch:** the implications are significant, the stakes are high, the reasons are structural, the consequences are real, the impact cannot be overstated
+**Problem:** The sentence announces that something matters without saying what it is. It reads as a conclusion and carries no information, which is why it survives editing: nothing in it can be checked.
+**Before:**
+> The implications for the team are significant.
+**After:**
+> (Name the implication. If the source says two engineers now own a service that used to have six, write that. If the source says nothing, cut the sentence.)
+
+### 37. Narrator from a Distance
+
+**Signs to watch:** Nobody designed this, People tend to, This happens because, One might argue; paragraphs opening on What, When, Why or How ("What makes this hard is...")
+**Problem:** Two habits with one cause. In the lecturer voice the writer reports on people in general instead of on anyone in particular; in the Wh-cleft opener the writer buries the subject behind a wind-up clause. Lead with the subject, and put the reader in the room.
+**Before:**
+> Two teams shipped the same fix last quarter. What makes this hard is the coordination cost. People tend to underestimate it.
+**After:**
+> Two teams shipped the same fix last quarter, because the coordination cost is easy to underestimate.
 
 ## DETECTION GUIDANCE
 
