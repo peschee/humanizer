@@ -7,7 +7,7 @@ description: |
   language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of AI writing."
 license: MIT
 metadata:
-  version: "3.0.0"
+  version: "3.1.0"
 ---
 
 # Humanizer: remove AI writing patterns
@@ -23,6 +23,7 @@ A language model writes whatever is most likely to come next, so by default it m
 - **Inflation.** Ordinary facts dressed as pivotal or expert-backed.
 - **Formatting by rule.** Bold and title case applied to every item.
 - **Leftovers.** Chat wrappers and drafting moves that were never meant for the reader.
+- **Hidden actors.** Things do the acting, or people in general stand in for someone in particular.
 
 Word habits change with every model release. The structural habits above persist, so they lead the list below.
 
@@ -165,14 +166,20 @@ A person may do any one of these on purpose, so the weaker ones need company fro
 **After:**
 > The new policy, announced without warning, affects thousands of workers. The changes, long overdue according to critics, will take effect immediately.
 
-### 9. Stacked qualifiers
+### 9. Stacked qualifiers and empty emphasis
 
-**Watch for:** to be fair, it's also possible, could potentially, might arguably, in some cases it may, this is an inference
+**Watch for:** to be fair, it's also possible, could potentially, might arguably, in some cases it may, this is an inference; really, just, genuinely, simply, truly, literally, deeply, fundamentally, incredibly; the implications are significant, the stakes are high, the consequences are real, the impact cannot be overstated
 **Problem:** Repeated editing adds one qualifier after another until every claim sounds uncertain, usually to repair an earlier overstatement rather than to report real doubt. Keep a qualifier only when the source supports it and the meaning needs it. Keep scope statements, legal and safety notices, and real corrections. Ordinary hedges such as *perhaps* or *tends to* are human habits and not tells. *Weak alone.*
+
+The same habit also runs the other way. Intensifiers pile up to make a sentence sound emphatic, or a sentence says that something matters without saying what. Cut the intensifiers. If the sentence falls apart without them, rewrite it. Replace the announcement with the fact it points at, or cut it if the source gives no fact. One intensifier is normal in casual writing; three in one sentence doing the same job is the tell.
 **Before:**
 > It could potentially possibly be argued that the policy might have some effect on outcomes.
 **After:**
 > The policy may affect outcomes.
+**Before (empty emphasis):**
+> This is genuinely hard, and it really matters that we get it right. The implications for the team are significant.
+**After:**
+> This is hard, and we need to get it right. (Then name the implication the source gives, such as two engineers now owning a service that used to have six. If it gives none, cut the sentence.)
 
 ### 10. Hyphenated pairs everywhere
 
@@ -356,6 +363,23 @@ Remove these outright. Nothing here needs rewriting.
 > This function was added to replace the previous approach of iterating through all items, which caused O(n²) performance.
 **After:**
 > This function uses a hash map for O(1) lookups, avoiding the O(n²) cost of naive iteration.
+
+## F. Hidden actors
+
+The sentence reads as a description, but nobody in it does anything. Put the person back.
+
+### 26. Things that act and a narrator at a distance
+
+**Watch for:** the complaint becomes a fix, the decision emerges, the culture shifts, the data tells us, the market rewards, the process ensures; Nobody designed this, People tend to, One might argue; paragraphs that open on What, When, Why, or How ("What makes this hard is...")
+**Problem:** Human verbs go to inanimate things, so whoever acted disappears. Decisions do not emerge; someone decides. §11 covers passive voice; this pattern covers active sentences with the wrong subject. The narrator does the same thing from further away. It reports on people in general instead of anyone in particular, or hides the subject behind a lead-in clause. Look for the actor in the nearby sentences first. Where the reader is the actor, use "you". If the source does not say who acted, write the sentence without an actor rather than inventing one. Technical phrasing such as "the function returns" is not a tell. *Weak alone.*
+**Before:**
+> Support reads every report. The complaint becomes a fix within days, and the culture shifts around it.
+**After:**
+> Support reads every report and fixes the complaint within days.
+**Before (narrator at a distance):**
+> Two teams shipped the same fix last quarter. What makes this hard is the coordination cost. People tend to underestimate it.
+**After:**
+> Two teams shipped the same fix last quarter, because the coordination cost is easy to underestimate.
 
 ## When not to act
 
